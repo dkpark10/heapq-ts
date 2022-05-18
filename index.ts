@@ -52,7 +52,7 @@ export default class Heap_Queue<T> {
 
     let idx = 0;
 
-    while (idx * 2 <= this.list.length - 1) {
+    while (idx * 2 < this.list.length - 1) {
       let leftChildIndex = idx * 2 + 1;
       let rightChildIndex = idx * 2 + 2;
 

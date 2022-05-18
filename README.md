@@ -2,23 +2,25 @@
 
 Library for using heap-queue with ts
 
-## install
+#### install
 
 ```
 npm i heapq-ts
 ```
 
-## import 
+#### import 
 
 ```
 import Heap_Queue from "heapq-ts";
 ```
 
+
+
 ## examples
 
 #### maxheap
 
-```
+```typescript
 const heapq: Heap_Queue = new Heap_Queue();
 heapq.push(4);
 heapq.push(1);
@@ -26,9 +28,11 @@ heapq.push(2);
 console.log(heapq.top()); // 4
 ```
 
+
+
 #### minheap
 
-```
+```typescript
 const heapq: Heap_Queue = new Heap_Queue(true);
 heapq.push(4);
 heapq.push(1);
@@ -36,9 +40,11 @@ heapq.push(2);
 console.log(heapq.top()); // 1
 ```
 
+
+
 #### custom comparison
 
-```
+```typescript
   interface Person {
     height:number;
     weight:number;
@@ -88,6 +94,8 @@ console.log(heapq.top()); // 1
   heapq.pop();
   console.log(heapq.top());  //   { height: 3222, weight: 22, grade: 9 }
 ```
+
+
 
 ## method
 

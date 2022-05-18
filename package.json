@@ -1,6 +1,6 @@
 {
-  "name": "ts_priority_q",
-  "version": "1.0.4",
+  "name": "heapq-ts",
+  "version": "1.0.6",
   "main": "index.js",
   "author": "dkpark100@gmail.com",
   "type": "module",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dkpark10/ts_priority_q"
+    "url": "https://github.com/dkpark10/heapq-ts"
   },
   "keywords": [
     "priority_queue",
@@ -28,6 +28,6 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
-    "heapq-ts": "^1.0.4"
+    "heapq-ts": "^1.0.6"
   }
 }

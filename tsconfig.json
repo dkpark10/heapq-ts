@@ -8,7 +8,6 @@
     "noImplicitReturns": true,
     "removeComments": true,
     "sourceMap": true,
-    "allowJs": false,
     "outDir": "./build",
     "rootDir": "./",
     "strictPropertyInitialization": true,
@@ -21,10 +20,8 @@
   },
   "exclude": [
     "node_modules",
-    "./node_modules/**/*"
   ],
   "include": [
     "./src/**/*",
-    "@type"
   ]
 }

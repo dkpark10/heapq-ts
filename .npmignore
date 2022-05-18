@@ -1,5 +1,4 @@
-tests
 .gitignore
-node_modules
-src
 .vscode
+tests
+node_modules

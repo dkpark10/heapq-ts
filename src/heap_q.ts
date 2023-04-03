@@ -83,7 +83,7 @@ export default class Heap_Queue<T> {
   }
 
   public size(): number {
-    return this.list.length - 1;
+    return this.list.length;
   }
 
   public isEmpty(): boolean {

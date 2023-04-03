@@ -1,6 +1,6 @@
 export type comparator<T> = boolean | ((a: T, b: T) => number);
 
-export default class Heap_Queue<T> {
+export default class HeapQueue<T> {
 
   private readonly list: T[] = [];
   private readonly comparator: comparator<T>;
@@ -53,8 +53,8 @@ export default class Heap_Queue<T> {
     let idx = 0;
 
     while (idx * 2 < this.list.length - 1) {
-      let leftChildIndex = idx * 2 + 1;
-      let rightChildIndex = idx * 2 + 2;
+      const leftChildIndex = idx * 2 + 1;
+      const rightChildIndex = idx * 2 + 2;
 
       if (this.list[leftChildIndex] === undefined) {
         break;

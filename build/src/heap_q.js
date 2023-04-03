@@ -66,7 +66,7 @@ var Heap_Queue = (function () {
         }
     };
     Heap_Queue.prototype.size = function () {
-        return this.list.length - 1;
+        return this.list.length;
     };
     Heap_Queue.prototype.isEmpty = function () {
         return this.list.length <= 0;

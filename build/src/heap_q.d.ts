@@ -1,4 +1,4 @@
-export declare type comparator<T> = boolean | ((a: T, b: T) => number);
+export type comparator<T> = boolean | ((a: T, b: T) => number);
 export default class Heap_Queue<T> {
     private readonly list;
     private readonly comparator;

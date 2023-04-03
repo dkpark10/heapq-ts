@@ -1,2 +1,2 @@
-import Heap_Queue from "./src/heap_q";
-export default Heap_Queue;
+import HeapQueue from "./src/heap_q";
+export default HeapQueue;

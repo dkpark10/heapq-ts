@@ -1,14 +1,14 @@
-var Heap_Queue = (function () {
-    function Heap_Queue(comparator) {
+var HeapQueue = (function () {
+    function HeapQueue(comparator) {
         this.list = [];
         this.ascending = false;
         this.comparator = comparator || false;
     }
-    Heap_Queue.prototype.swap = function (idx1, idx2) {
+    HeapQueue.prototype.swap = function (idx1, idx2) {
         var _a;
         _a = [this.list[idx2], this.list[idx1]], this.list[idx1] = _a[0], this.list[idx2] = _a[1];
     };
-    Heap_Queue.prototype.compare = function (current, target) {
+    HeapQueue.prototype.compare = function (current, target) {
         if (typeof this.comparator === "boolean") {
             if (this.comparator === this.ascending) {
                 return current > target;
@@ -19,7 +19,7 @@ var Heap_Queue = (function () {
         }
         return this.comparator(current, target) < 1;
     };
-    Heap_Queue.prototype.push = function (item) {
+    HeapQueue.prototype.push = function (item) {
         this.list.push(item);
         var idx = this.list.length - 1;
         var parentNodeIndex = Math.ceil(idx / 2) - 1;
@@ -32,7 +32,7 @@ var Heap_Queue = (function () {
             parentNodeIndex = Math.ceil(idx / 2) - 1;
         }
     };
-    Heap_Queue.prototype.pop = function () {
+    HeapQueue.prototype.pop = function () {
         if (this.isEmpty()) {
             return;
         }
@@ -65,16 +65,16 @@ var Heap_Queue = (function () {
             }
         }
     };
-    Heap_Queue.prototype.size = function () {
+    HeapQueue.prototype.size = function () {
         return this.list.length;
     };
-    Heap_Queue.prototype.isEmpty = function () {
+    HeapQueue.prototype.isEmpty = function () {
         return this.list.length <= 0;
     };
-    Heap_Queue.prototype.top = function () {
+    HeapQueue.prototype.top = function () {
         return this.list[0];
     };
-    return Heap_Queue;
+    return HeapQueue;
 }());
-export default Heap_Queue;
+export default HeapQueue;
 //# sourceMappingURL=heap_q.js.map

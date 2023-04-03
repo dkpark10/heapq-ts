@@ -3,7 +3,6 @@
   "version": "1.0.6",
   "main": "index.js",
   "author": "dkpark100@gmail.com",
-  "type": "module",
   "types": "./index.d.ts",
   "scripts": {
     "test": "jest",
@@ -24,6 +23,9 @@
   ],
   "description": "",
   "devDependencies": {
+    "@babel/preset-env": "^7.21.4",
+    "@babel/preset-typescript": "^7.16.5",
+    "@types/jest": "^29.2.5",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
     "eslint": "^8.37.0",

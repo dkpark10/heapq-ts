@@ -1,5 +1,5 @@
 export type comparator<T> = boolean | ((a: T, b: T) => number);
-export default class Heap_Queue<T> {
+export default class HeapQueue<T> {
     private readonly list;
     private readonly comparator;
     private readonly ascending;

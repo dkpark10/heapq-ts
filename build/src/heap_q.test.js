@@ -1,6 +1,6 @@
 import HeapQueue from './heap_q';
-describe('우선순위 큐 테스트', function () {
-    test('오름차순 숫자', function () {
+describe('heapq test', function () {
+    test('ascending test of numbers', function () {
         var pq = new HeapQueue();
         expect(pq.size()).toEqual(0);
         expect(pq.isEmpty()).toEqual(true);
@@ -24,7 +24,7 @@ describe('우선순위 큐 테스트', function () {
         expect(pq.size()).toEqual(0);
         expect(pq.isEmpty()).toEqual(true);
     });
-    test('내림차순 숫자', function () {
+    test('descending test of numbers', function () {
         var pq = new HeapQueue(true);
         expect(pq.size()).toEqual(0);
         expect(pq.isEmpty()).toEqual(true);
@@ -47,7 +47,7 @@ describe('우선순위 큐 테스트', function () {
         expect(pq.size()).toEqual(0);
         expect(pq.isEmpty()).toEqual(true);
     });
-    test('객체 테스트', function () {
+    test('object test', function () {
         var p1 = {
             height: 3222,
             weight: 22,

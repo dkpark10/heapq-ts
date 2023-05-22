@@ -7,7 +7,7 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "removeComments": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "outDir": "./build",
     "rootDir": "./",
     "strictPropertyInitialization": true,

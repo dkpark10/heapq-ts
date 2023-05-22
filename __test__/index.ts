@@ -1,4 +1,4 @@
-import HeapQueue from './heap_q';
+import HeapQueue from '../src/heap_q';
 
 describe('heapq test', () => {
   test('ascending test of numbers', () => {

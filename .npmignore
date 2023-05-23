@@ -1,5 +1,12 @@
 .gitignore
 .vscode
-tests
+__test__
 src
 node_modules
+.babelrc
+.eslintrc.json
+.prettierrc
+jest.config.json
+launch.json
+tsconfig.json
+yarn.lock

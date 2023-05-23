@@ -9,7 +9,7 @@
     "removeComments": true,
     "sourceMap": false,
     "outDir": "./",
-    "rootDir": "./",
+    "rootDir": "./src",
     "strictPropertyInitialization": true,
     "declaration": true,
     "lib": [

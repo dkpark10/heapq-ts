@@ -2,6 +2,7 @@
 .vscode
 __test__
 node_modules
+src
 .babelrc
 .eslintrc.json
 .prettierrc

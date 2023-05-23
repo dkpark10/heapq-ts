@@ -1,6 +1,6 @@
 {
   "name": "heapq-ts",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "index.js",
   "author": "dkpark100@gmail.com",
   "types": "./index.d.ts",

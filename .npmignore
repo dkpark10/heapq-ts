@@ -5,7 +5,7 @@ node_modules
 .babelrc
 .eslintrc.json
 .prettierrc
-jest.config.json
+jest.config.js
 launch.json
 tsconfig.json
 yarn.lock

@@ -103,17 +103,21 @@ console.log(heapq.top()); // 1
 
 push item in the heap
 
+
 #### pop()
 
-pop the smallest item or largest item of the heap
+pop the smallest item or largest item of the heap and return
+
 
 ### top()
 
 get the smallest item or largest item
 
+
 #### size()
 
 get the length of heap
+
 
 #### empty()
 

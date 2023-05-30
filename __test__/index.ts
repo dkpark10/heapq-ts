@@ -66,6 +66,34 @@ describe('heapq test', () => {
     expect(pq.isEmpty()).toEqual(true);
   });
 
+  test('pop return test', () => {
+    const pq = new HeapQueue();
+    pq.push(1);
+    pq.push(2);
+    pq.push(3);
+    pq.push(4);
+    pq.push(5);
+
+    expect(pq.size()).toEqual(5);
+    expect(pq.top()).toEqual(5);
+
+    expect(pq.pop()).toEqual(5);
+    expect(pq.top()).toEqual(4);
+
+    expect(pq.pop()).toEqual(4);
+    expect(pq.top()).toEqual(3);
+
+    expect(pq.pop()).toEqual(3);
+    expect(pq.top()).toEqual(2);
+
+    expect(pq.pop()).toEqual(2);
+    expect(pq.top()).toEqual(1);
+
+    expect(pq.pop()).toEqual(1);
+    expect(pq.isEmpty()).toBeTruthy();
+    expect(pq.pop()).toEqual(null);
+  });
+
   test('object test', () => {
     interface Person {
       height: number;

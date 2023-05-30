@@ -44,9 +44,10 @@ export default class HeapQueue<T> {
 
   public pop() {
     if (this.isEmpty()) {
-      return;
+      return null;
     }
 
+    const topData = this.list[0];
     this.list[0] = this.list.slice(-1)[0];
     this.list.pop();
 
@@ -80,6 +81,8 @@ export default class HeapQueue<T> {
         idx = rightChildIndex;
       }
     }
+
+    return topData;
   }
 
   public size(): number {

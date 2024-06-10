@@ -1,3 +1,6 @@
+var isObject = function (data) {
+    return (typeof data === 'object' && data !== null) || Array.isArray(data);
+};
 var HeapQueue = (function () {
     function HeapQueue(comparator) {
         this.list = [];
@@ -9,23 +12,23 @@ var HeapQueue = (function () {
         _a = [this.list[idx2], this.list[idx1]], this.list[idx1] = _a[0], this.list[idx2] = _a[1];
     };
     HeapQueue.prototype.compare = function (current, target) {
-        if (typeof this.comparator === "boolean") {
+        if (typeof this.comparator === 'boolean') {
             if (this.comparator === this.ascending) {
                 return current > target;
             }
-            else {
-                return current < target;
-            }
+            return current < target;
         }
         return this.comparator(current, target) < 1;
     };
     HeapQueue.prototype.push = function (item) {
+        if (isObject(item) && !this.comparator) {
+            throw new Error('When the data type is an object, a comparator function must be registered.');
+        }
         this.list.push(item);
         var idx = this.list.length - 1;
         var parentNodeIndex = Math.ceil(idx / 2) - 1;
-        if (this.list.length === 1) {
+        if (this.list.length === 1)
             return;
-        }
         while (idx > 0 && this.compare(item, this.list[parentNodeIndex])) {
             this.swap(idx, parentNodeIndex);
             idx = Math.ceil(idx / 2) - 1;
@@ -33,9 +36,9 @@ var HeapQueue = (function () {
         }
     };
     HeapQueue.prototype.pop = function () {
-        if (this.isEmpty()) {
-            return;
-        }
+        if (this.isEmpty())
+            throw new Error('Empty Queue');
+        var topData = this.list[0];
         this.list[0] = this.list.slice(-1)[0];
         this.list.pop();
         var idx = 0;
@@ -51,8 +54,8 @@ var HeapQueue = (function () {
                 }
                 break;
             }
-            if (this.compare(this.list[idx], this.list[leftChildIndex])
-                && this.compare(this.list[idx], this.list[rightChildIndex])) {
+            if (this.compare(this.list[idx], this.list[leftChildIndex]) &&
+                this.compare(this.list[idx], this.list[rightChildIndex])) {
                 break;
             }
             if (this.compare(this.list[leftChildIndex], this.list[rightChildIndex])) {
@@ -64,6 +67,7 @@ var HeapQueue = (function () {
                 idx = rightChildIndex;
             }
         }
+        return topData;
     };
     HeapQueue.prototype.size = function () {
         return this.list.length;
@@ -72,8 +76,10 @@ var HeapQueue = (function () {
         return this.list.length <= 0;
     };
     HeapQueue.prototype.top = function () {
+        if (this.isEmpty())
+            throw new Error('Empty Queue');
         return this.list[0];
     };
     return HeapQueue;
 }());
-export default HeapQueue;
+export { HeapQueue };

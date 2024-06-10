@@ -8,8 +8,8 @@
     "noImplicitReturns": true,
     "removeComments": true,
     "sourceMap": false,
-    "outDir": "./",
     "rootDir": "./src",
+    "outDir": "./dist",
     "strictPropertyInitialization": true,
     "declaration": true,
     "lib": [
@@ -23,6 +23,6 @@
     "__test__",
   ],
   "include": [
-    "./**/*.ts",
+    "./src/**/*.ts",
   ]
 }

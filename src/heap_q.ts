@@ -1,39 +1,44 @@
-export type comparator<T> = boolean | ((a: T, b: T) => number);
+const isObject = (data: any): boolean => {
+  return (typeof data === 'object' && data !== null) || Array.isArray(data);
+};
 
-export default class HeapQueue<T> {
+export type Comparator<T> = boolean | ((a: T, b: T) => number);
 
+export class HeapQueue<T> {
   private readonly list: T[] = [];
-  private readonly comparator: comparator<T>;
+
+  private readonly comparator: Comparator<T>;
+
   private readonly ascending = false;
 
-  constructor(comparator?: comparator<T>) {
+  constructor(comparator?: Comparator<T>) {
     this.comparator = comparator || false;
   }
 
-  private swap(idx1: number, idx2: number) {
+  private swap(idx1: number, idx2: number): void {
     [this.list[idx1], this.list[idx2]] = [this.list[idx2], this.list[idx1]];
   }
 
   public compare(current: T, target: T): boolean {
-    if (typeof this.comparator === "boolean") {
+    if (typeof this.comparator === 'boolean') {
       if (this.comparator === this.ascending) {
         return current > target;
-      } else {
-        return current < target;
       }
+      return current < target;
     }
-
     return this.comparator(current, target) < 1;
   }
 
-  public push(item: T) {
+  public push(item: T): void {
+    if (isObject(item) && !this.comparator) {
+      throw new Error('When the data type is an object, a comparator function must be registered.');
+    }
+
     this.list.push(item);
     let idx = this.list.length - 1;
     let parentNodeIndex = Math.ceil(idx / 2) - 1;
 
-    if (this.list.length === 1) {
-      return;
-    }
+    if (this.list.length === 1) return;
 
     while (idx > 0 && this.compare(item, this.list[parentNodeIndex])) {
       this.swap(idx, parentNodeIndex);
@@ -42,12 +47,11 @@ export default class HeapQueue<T> {
     }
   }
 
-  public pop() {
-    if (this.isEmpty()) {
-      return null;
-    }
+  public pop(): T {
+    if (this.isEmpty()) throw new Error('Empty Queue');
 
     const topData = this.list[0];
+    // eslint-disable-next-line prefer-destructuring
     this.list[0] = this.list.slice(-1)[0];
     this.list.pop();
 
@@ -68,8 +72,10 @@ export default class HeapQueue<T> {
         break;
       }
 
-      if (this.compare(this.list[idx], this.list[leftChildIndex])
-        && this.compare(this.list[idx], this.list[rightChildIndex])) {
+      if (
+        this.compare(this.list[idx], this.list[leftChildIndex]) &&
+        this.compare(this.list[idx], this.list[rightChildIndex])
+      ) {
         break;
       }
 
@@ -94,6 +100,7 @@ export default class HeapQueue<T> {
   }
 
   public top(): T {
+    if (this.isEmpty()) throw new Error('Empty Queue');
     return this.list[0];
   }
 }

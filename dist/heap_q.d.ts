@@ -1,8 +1,10 @@
-export type Comparator<T> = boolean | ((a: T, b: T) => number);
+export type Comparator<T> = {
+    max?: boolean;
+    min?: boolean;
+} | ((a: T, b: T) => number);
 export declare class HeapQueue<T> {
     private list;
     private readonly comparator;
-    private readonly ascending;
     constructor(comparator?: Comparator<T>);
     private swap;
     compare(current: T, target: T): boolean;

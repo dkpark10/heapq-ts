@@ -2,17 +2,15 @@ const isObject = (data: any): boolean => {
   return (typeof data === 'object' && data !== null) || Array.isArray(data);
 };
 
-export type Comparator<T> = boolean | ((a: T, b: T) => number);
+export type Comparator<T> = { max?: boolean; min?: boolean } | ((a: T, b: T) => number);
 
 export class HeapQueue<T> {
   private list: T[] = [];
 
   private readonly comparator: Comparator<T>;
 
-  private readonly ascending = false;
-
   constructor(comparator?: Comparator<T>) {
-    this.comparator = comparator || false;
+    this.comparator = comparator ?? { max: true };
   }
 
   private swap(idx1: number, idx2: number): void {
@@ -20,17 +18,22 @@ export class HeapQueue<T> {
   }
 
   public compare(current: T, target: T): boolean {
-    if (typeof this.comparator === 'boolean') {
-      if (this.comparator === this.ascending) {
-        return current > target;
-      }
+    if (typeof this.comparator === 'function') {
+      return this.comparator(current, target) < 1;
+    }
+
+    if (this.comparator.min === true && this.comparator.max === true) {
+      throw new Error('');
+    }
+
+    if (this.comparator.min === true) {
       return current < target;
     }
-    return this.comparator(current, target) < 1;
+    return current > target;
   }
 
   public push(item: T): void {
-    if (isObject(item) && !this.comparator) {
+    if (isObject(item) && typeof this.comparator !== 'function') {
       throw new Error('When the data type is an object, a comparator function must be registered.');
     }
 

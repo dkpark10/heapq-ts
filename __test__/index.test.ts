@@ -76,7 +76,7 @@ describe('heapq test', () => {
   });
 
   test('test 11', () => {
-    const pq = new HeapQueue<number>(true);
+    const pq = new HeapQueue<number>({ min: true });
     pq.push(1);
     pq.push(2);
     pq.pop();
@@ -84,14 +84,14 @@ describe('heapq test', () => {
   });
 
   test('test 12', () => {
-    const pq = new HeapQueue<number>(true);
+    const pq = new HeapQueue<number>({ min: true });
     pq.push(2);
     pq.push(1);
     expect(pq.top()).toBe(1);
   });
 
   test('test 13', () => {
-    const pq = new HeapQueue<number>(true);
+    const pq = new HeapQueue<number>({ min: true });
     pq.push(2);
     pq.push(3);
     pq.push(1);
@@ -102,7 +102,7 @@ describe('heapq test', () => {
   });
 
   test('test 14', () => {
-    const pq = new HeapQueue<number>(true);
+    const pq = new HeapQueue<number>({ min: true });
     pq.push(2);
     pq.push(3);
     pq.push(4);
@@ -113,7 +113,7 @@ describe('heapq test', () => {
   });
 
   test('test 15', () => {
-    const pq = new HeapQueue<number>(true);
+    const pq = new HeapQueue<number>({ min: true });
     pq.push(6);
     pq.push(2);
     pq.push(4);
@@ -124,7 +124,7 @@ describe('heapq test', () => {
   });
 
   test('test 16', () => {
-    const pq = new HeapQueue<number>(true);
+    const pq = new HeapQueue<number>({ min: true });
     pq.push(6);
     pq.push(2);
     pq.push(4);
@@ -136,7 +136,7 @@ describe('heapq test', () => {
   });
 
   test('test 17', () => {
-    const pq = new HeapQueue<number>(true);
+    const pq = new HeapQueue<number>({ min: true });
     pq.push(6);
     pq.push(2);
     pq.push(4);
@@ -180,7 +180,7 @@ describe('heapq test', () => {
   });
 
   test('descending test of numbers', () => {
-    const pq = new HeapQueue<number>(true);
+    const pq = new HeapQueue<number>({ min: true });
 
     expect(pq.size()).toEqual(0);
     expect(pq.isEmpty()).toEqual(true);
@@ -292,6 +292,18 @@ describe('heapq test', () => {
     };
 
     const fn = pq.push.bind(pq);
+    expect(() => fn(p1)).toThrow();
+  });
+
+  test('should throw error if both min and max are true', () => {
+    const pq = new HeapQueue<Person>({ min: true, max: true });
+    const p1: Person = {
+      height: 3222,
+      weight: 22,
+      grade: 1,
+    };
+
+    const fn = pq.compare.bind(pq);
     expect(() => fn(p1)).toThrow();
   });
 

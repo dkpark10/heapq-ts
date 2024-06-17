@@ -12,3 +12,4 @@ tsconfig.json
 yarn.lock
 index.ts
 heap_q.ts
+example.ts

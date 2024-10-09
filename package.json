@@ -6,6 +6,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "jest",
+    "build": "pnpm run build:es && pnpm run build:cjs",
     "build:es": "VITE_MODULE=es vite build",
     "build:cjs": "VITE_MODULE=cjs vite build",
     "prepare": "npm run build",

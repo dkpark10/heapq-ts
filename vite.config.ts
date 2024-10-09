@@ -4,17 +4,18 @@ import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   build: {
+    emptyOutDir: false,
     lib: {
-      formats: ['iife', 'umd'],
+      formats: process.env.VITE_MODULE === 'cjs' ? ['cjs'] : ['es'],
       name: 'heapqTs',
       entry: path.resolve(__dirname, 'src/index.ts'),
     },
+    outDir: 'dist',
     rollupOptions: {
       output: {
-        entryFileNames: '[name].js',
+        entryFileNames: `${process.env.VITE_MODULE === 'cjs' ? 'cjs' : 'es'}/[name].js`,
       },
     },
-    outDir: 'dist',
   },
   plugins: [dts()],
 });

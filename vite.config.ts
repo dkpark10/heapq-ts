@@ -6,7 +6,8 @@ export default defineConfig({
   build: {
     emptyOutDir: false,
     lib: {
-      formats: process.env.VITE_MODULE === 'cjs' ? ['cjs'] : ['es'],
+      // https://ko.vitejs.dev/config/build-options#build-minify  es 빌드는 트리쉐이킹 불가
+      formats: process.env.VITE_MODULE === 'cjs' ? ['cjs'] : ['iife', 'umd'],
       name: 'heapqTs',
       entry: path.resolve(__dirname, 'src/index.ts'),
     },

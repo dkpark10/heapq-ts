@@ -2,12 +2,11 @@
   "name": "heapq-ts",
   "version": "1.4.1",
   "author": "dkpark100@gmail.com",
-  "main": "./dist/es/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "vite build && pnpm run build:cjs",
-    "build:cjs": "VITE_MODULE=cjs vite build",
+    "build": "vite build",
     "prepare": "npm run build",
     "start": "node ./dist/index.js",
     "deploy": "npm publish --access=public"
@@ -23,13 +22,6 @@
     "heapq",
     "heap"
   ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/es/index.js"
-    }
-  },
   "description": "priority_queue library",
   "devDependencies": {
     "@babel/preset-env": "^7.21.4",
